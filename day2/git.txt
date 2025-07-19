@@ -1,3 +1,18 @@
+Steps to check into git
+1. git init
+2. git config --global user.email "mymail@mine.com"
+3. git config --global user.name "my git user name"
+4. git add *
+5. git commit -m "my comments"
+6. git remote add origin https://github.com/<my username>/<my repo>.git
+7. git push -u origin master
+
+Authentication  issue: Solved by creating a token.
+
+
+
+
+
 Git & GitHub Troubleshooting 
 
 1. Challenge: Push Rejected Due to Non-Fast-Forward Error
