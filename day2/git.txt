@@ -1,4 +1,4 @@
-Git & GitHub Troubleshooting – My Experience
+Git & GitHub Troubleshooting 
 
 1. Challenge: Push Rejected Due to Non-Fast-Forward Error
 ----------------------------------------------------------
