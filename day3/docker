@@ -44,4 +44,11 @@ trying second data
 -d : deattaced mode- the container runs in the background freeying the terminal. long lived
 -it : Interactive - the container runs using the terminal, if no process is running it will be exited , short lived
 
+docker exec: to execute a command in a running container
+
+to stop all runnig containers:docker stop $(docker ps -q)
+
+to stop exiting immediately  after docker run command: docker run -d ubuntu sleep infinity 
+
+
 
