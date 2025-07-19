@@ -1,3 +1,15 @@
 Understood diff between docker run vs docker start
   docker run - creating a a new container from base image and starting it
   docker start - starting a specific instance of the base image. its not a new one so the files persist everytime we start/stop
+
+docker volume:
+  when we want to persist data and files
+  create a volume:docker volume create my-volume
+  command:docker run -it --mount source=vol-name,destination=/my-data base-image
+
+  mount vs bind
+  Mount:Managed by Docker,Volumes are created and managed by Docker, stored in /var/lib/docker/volumes 
+  Bind:Host Filesystem Dependent, Bind mounts directly map a directory or file from the host filesystem into a container.
+
+-d : deattaced mode- the container runs in the background freeying the terminal. long lived
+-it : Interactive - the container runs using the terminal, if no process is running it will be exited , short lived
