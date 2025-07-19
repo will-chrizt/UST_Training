@@ -32,5 +32,5 @@ How I fixed it:
 
 Result:
 -------
-Now, everything is clean and in sync. I'm only using the 'master' branch both locally and on GitHub. This helped me better understand Git concepts like rebasing, branch renaming, and safe deletion.
+Now, everything is clean and in sync. I'm only using the 'master' branch both locally and on GitHub. 
 
