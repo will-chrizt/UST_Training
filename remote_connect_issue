@@ -1,0 +1,16 @@
+failed to connect to my github repo
+how to do
+       
+      steps
+1.create an ssh key in /.ssh path
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    cat ~/.ssh/id_rsa.pub
+2.Go to:
+🔗 GitHub → Settings → SSH and GPG keys
+➕ Click "New SSH Key" → Paste it there → Save.
+
+3. ssh -T git@github.com
+
+4. git clone git@github.com:will-chrizt/git_prac.git
+
+5.now cd repo and make changes push :git push origin main
