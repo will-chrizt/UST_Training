@@ -1,0 +1,36 @@
+Git & GitHub Troubleshooting – My Experience
+
+1. Challenge: Push Rejected Due to Non-Fast-Forward Error
+----------------------------------------------------------
+While trying to push my local changes to GitHub, I got the following error:
+
+    ! [rejected]        main -> main (non-fast-forward)
+    error: failed to push some refs to ...
+
+I realized this was because my local branch was behind the remote branch on GitHub. Git was preventing me from accidentally overwriting newer changes on the remote.
+
+How I fixed it:
+- I used the following command to pull the latest changes and rebase my commits on top of them:
+      git pull origin main --rebase
+- Then I was able to push successfully using:
+      git push origin main
+
+2. Challenge: Confusion Between 'main' and 'master' Branches
+------------------------------------------------------------
+I noticed that my GitHub repository had two branches: 'master' (which was set as the default) and 'main' (my local working branch). This mismatch caused confusion and push errors.
+
+How I fixed it:
+- I decided to follow the GitHub default and renamed my local branch from 'main' to 'master':
+      git branch -M master
+- Then I pushed the renamed branch and set it to track the remote:
+      git push -u origin master
+- Finally, I cleaned up the extra 'main' branch:
+    - Locally:
+          git branch -d main
+    - Remotely:
+          git push origin --delete main
+
+Result:
+-------
+Now, everything is clean and in sync. I'm only using the 'master' branch both locally and on GitHub. This helped me better understand Git concepts like rebasing, branch renaming, and safe deletion.
+
