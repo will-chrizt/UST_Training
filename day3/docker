@@ -1,0 +1,3 @@
+Understood diff between docker run vs docker start
+  docker run - creating a a new container from base image and starting it
+  docker start - starting a specific instance of the base image. its not a new one so the files persist everytime we start/stop
