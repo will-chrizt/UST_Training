@@ -45,6 +45,7 @@ trying second data
 -it : Interactive - the container runs using the terminal, if no process is running it will be exited , short lived
 
 docker exec: to execute a command in a running container
+  docker exec [options] image id "commands"
 
 to stop all runnig containers:docker stop $(docker ps -q)
 
