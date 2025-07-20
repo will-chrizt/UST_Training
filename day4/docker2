@@ -1,0 +1,10 @@
+to create an image with specific packages included and reuse later
+     steps
+  1.docker run -it "container image"
+  2.install packages  apt install vim
+  3.save - docker commit "container id" "new image name"
+  4.docker run -it  "new image name/id"
+
+
+
+  
