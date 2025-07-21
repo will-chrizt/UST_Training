@@ -61,6 +61,34 @@ docker inspect bridge:
 more secure networking - custom netwrk
 create a netwrok - docker network create <my-net>
 run a container using the netwrok - docker run -d --network=my-net ubuntu 
-if we
+the custom netwrk will be in a different  subnet compared to bridge:
+docker ninspect my-net:
+Name": "my-net",
+        "Id": "4349159c81d9ef5f5b481a43af33105852836c8b741241c0780204d138979356",
+        "Created": "2025-07-21T06:10:37.806806994Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",  " not same as bridge netwrk "
+                    "Gateway": "172.18.0.1"
+                }
+            ]
 
+-The  custom net can isolate a  container from others 
+-Also we can add more containers to the the custom netwrk if its rewuired
+-Only contains runnig with type "custom net' can communicate with each other
+
+
+host netwrok type:
+here the network of the container is same as the host machine
+-Adv   :  We dont need to specify port while running containers
+-Risky : no security,anyone can access the container
+command  :docker run -d --network=host ubuntu
+the ip of the container is set to 0.0.0.0
   
