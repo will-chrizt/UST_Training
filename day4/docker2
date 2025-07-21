@@ -6,5 +6,23 @@ to create an image with specific packages included and reuse later
   4.docker run -it  "new image name/id"
 
 
+CRETAED a simple flash app  and containerised using a docker file
+docker file:
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY . .
+RUN pip install flask
+EXPOSE 5000
+CMD ["python","app.py"]
+
+
+docker build -t app-im .   "creating a base image based on the dockerfile"
+
+docker run -d -p 5000:5000 --name my-app app-im   "creating a container based on the image ,mapped to port 5000"
+
+*Issue i faaced - the container is successfully running but i couldnt see it in my browser local host 127.0.0.1:5000
+solved: Realized my host system is the ec2 ubuntu machine not my laptop
+so.. checked http://<ip-ec2machine>:5000   "It worked properly"
 
   
