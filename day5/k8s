@@ -1,0 +1,28 @@
+1.  Multi-Container Pod:
+   - Created a pod (`web-app-pod`) defined in a YAML file.
+   - Pod included two containers:
+     • `web-app`: Runs the NGINX server and serves content from `/usr/share/nginx/html`.
+     • `content-updater`: A busybox container that updates HTML content every 60 seconds using a shell loop.
+   - Used a shared volume of type `emptyDir` named `shared-data` to enable both containers to access the same files.
+   - NGINX reads from the volume at `/usr/share/nginx/html`, while the busybox writes to `/shared`.
+
+2. Port Forwarding and Access:
+   - Ran `kubectl port-forward pod/web-app-pod 8080:80` to map local port 8080 to the pod's port 80.
+   - Accessed the application from within the EC2 using `curl http://localhost:8080`.
+   - Realized that port-forwarding works only inside the machine where `kubectl` is run (EC2 instance), not directly from a local Mac without tunneling.
+
+3.  Volume Exploration:
+   - Used `kubectl exec -it web-app-pod -c web-app -- sh` and `-c content-updater` to access containers interactively.
+   - Verified that changes made by the busybox container were reflected in the NGINX container through the shared volume.
+   - Understood how volumes can help containers in the same pod to share and persist data.
+
+4.  Networking Concepts:
+   - Explored how Kubernetes pod networking works.
+   - Observed that containers in a pod share the same network namespace.
+   - Learned that without a Kubernetes Service, pods aren’t accessible externally unless port-forwarding or direct node IP access is used.
+   - Understood how `NodePort` and `LoadBalancer` types can expose services to the outside world.
+
+5.  Errors and Troubleshooting:
+   - Encountered "Connection refused" when trying to curl EC2 private IP from outside.
+   - Realized it’s due to port-forward binding only to `127.0.0.1` and not EC2's public interface.
+   - Solved internal access using SSH and local curl, suggested SSH tunneling for external access.
