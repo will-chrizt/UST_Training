@@ -1,0 +1,102 @@
+ **ReplicaSet**
+   - Ensures specified number of pod replicas are always running.
+  
+  # replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replicaset
+  labels:
+    app: nginx
+spec:
+  replicas: 3  # We want 3 pods
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+
+          replicas: 3: Always keep 3 pods runningselector
+          selector: How to identify which pods belong to this ReplicaSettemplate
+          template: The blueprint for creating new pods
+
+
+
+ ***Deployment*****
+
+      A Deployment is like a smart manager that handles ReplicaSets for you. It's the most commonly used object in Kubernetes because it solves the update problem.What it does:      
+
+            Creates and manages ReplicaSetsHandles 
+            Handls rolling updates with zero downtime
+            Can rollback to previous versionsProvides update history
+            Provides update history
+  # deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+
+
+            
+5. **Changing container name**
+   - Pod not recreated unless pod template changes.
+
+6. **kubectl set image**
+   - Updates image in deployment.
+   - For multiple containers, specify container name.
+    kubectl set image deployment/nginx-deployment nginx=nginx:1.22
+
+7. **CrashLoopBackOff**
+   - Happens when image lacks required startup commands (e.g. `ubuntu`).
+    no active processes alive when we set up ubuntu
+
+8. **Viewing pod details**
+   - Used `kubectl describe pod <pod-name>`.
+
+9. **Deleting/stopping pods**
+   - `kubectl delete pod <pod-name>`
+   - Stop via scaling down or deleting controller.
+
+10. **What is a cluster**
+    - Group of machines (nodes) running containers under Kubernetes orchestration.
+
+
+kubectl apply -f <file>.yaml    	Apply a YAML configuration (pod, replicaset, deployment, etc.).
+kubectl get pods	     List all pods in the current namespace.
+kubectl describe pod <pod_name>    	Show detailed info about a pod.
+kubectl port-forward pod/<pod_name> 8080:80	       Forward port from pod to your local machine (e.g., access web server in pod).
+kubectl delete pod <pod_name>	    Delete a specific pod manually.
+kubectl get rs	   Get all ReplicaSets.
+kubectl get deployments	   List all deployments.
+kubectl set image deployment/nginx-deployment nginx=nginx:1.22  	Update container image in a deployment.
+kubectl rollout status deployment/<name>	  Check rollout progress of a deployment.
+kubectl scale deployment nginx-deployment --replicas=0	      Scale down a deployment to stop all pods.
+kubectl get all	    Show all resources (pods, svc, rs, deployments, etc.) in namespace.
+kubectl delete -f <file>.yaml	     Delete resources defined in the YAML file.
+
+
