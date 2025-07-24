@@ -1,1 +1,27 @@
+Persistent volume: 
+   A Persistent Volume (PV) in Kubernetes is a storage resource that provides persistent storage for pods in a Kubernetes cluster.
+   Unlike ephemeral storage, which is tied to the lifecycle of a pod and is deleted when the pod is terminated, 
+   PVs allow data to persist beyond the lifecycle of the pods that use them.
+   This makes PVs essential for stateful applications such as databases or analytics tools, where data needs to be retained even if the pod is restarted or rescheduled.
 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: task-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/ubuntu/test"
+
+Persistent Volume Claim (PVC).:
+  PVs are managed by the cluster administrator and can be provisioned either manually or dynamically through a Persistent Volume Claim (PVC).
+ They abstract the underlying storage technology, allowing users to access storage without needing to know the details of the infrastructure.
+ PVs can be used with various storage types, including local storage, network-attached storage (NAS), and cloud storage platforms.
+
+  
