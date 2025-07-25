@@ -12,3 +12,83 @@ you're essentially telling Kubernetes how to connect to a set of Pods, even if t
 
 4: Enables Service Discovery: Other applications can find your service by its name.
 
+
+
+ClusterIP (Default):
+
+  Purpose: Exposes the Service on an internal IP address within the cluster. This is the default type.
+
+  Access: Only reachable from within the cluster. Ideal for internal microservices communication.
+  
+  How it works: Kubernetes assigns a stable internal IP address.
+
+  Use Case: Backend services, database services, or any service not meant to be directly accessed from outside the cluster.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app # This matches the 'app: my-app' label on your Pods
+  ports:
+    - protocol: TCP
+      port: 80 # The port on the Service
+      targetPort: 80 # The port your application is listening on inside the Pod
+  type: ClusterIP # Explicitly defined, though it's the default
+
+
+
+NodePort:
+
+Purpose: Exposes the Service on a static port on each Node in the cluster.
+
+Access: Reachable from outside the cluster by accessing NodeIP:NodePort.
+
+How it works: Kubernetes allocates a port from a pre-defined range (default: 30000-32767) on each Node. Any traffic sent to that port on any Node will be forwarded to the Service.
+
+Use Case: Simple external access, development environments, or when you don't have a cloud load balancer.
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-nodeport-service
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080 # Optional: You can specify a port, or Kubernetes will pick one
+  type: NodePort
+
+
+LoadBalancer:
+
+Purpose: Exposes the Service externally using a cloud provider's load balancer.
+
+Access: Highly available and scalable external access.
+
+How it works: Requires a cloud provider (e.g., AWS, GCP, Azure) that supports load balancers. Kubernetes provisions a cloud load balancer that automatically routes external traffic to your Service.
+
+Use Case: Production applications that need robust external access, typically integrated with DNS.
+
+ apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-loadbalancer-service
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
