@@ -1,0 +1,25 @@
+create a docker file
+
+build the docker image from docker file:   
+     docker run -t <image-name>
+
+pushing into docker hub
+       docker push username/repository:tag
+
+Now create a pod using a yaml file:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-docker-pod
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: my-container
+    image: willchrist/my-nginx:latest    -- here we specify the image from dockerhub
+    ports:
+    - containerPort: 80   
+
+
+create the pod: 
+    kubectl apply -f <name>.yaml 
