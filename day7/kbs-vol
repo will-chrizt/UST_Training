@@ -1,4 +1,18 @@
-Persistent volume: 
+Volumes:
+
+1.Empty directory:
+ Temporary storage
+ once the pod is down the data is gone
+
+2.hostPath
+  Mounts a file or directory from the host Node's filesystem into a Pod.
+  data perssist even if pode is deleted and restarted on same node
+ dis adv - in multi node cluster it wont work. 
+
+
+
+
+3. Persistent volume: 
    A Persistent Volume (PV) in Kubernetes is a storage resource that provides persistent storage for pods in a Kubernetes cluster.
    Unlike ephemeral storage, which is tied to the lifecycle of a pod and is deleted when the pod is terminated, 
    PVs allow data to persist beyond the lifecycle of the pods that use them.
