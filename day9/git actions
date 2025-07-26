@@ -1,0 +1,62 @@
+Workflow:
+
+  A workflow is an automated process defined by a YAML file.
+  It's stored in the .github/workflows/ directory of your repository.
+  A single repository can have multiple workflows, each triggered by different events and performing different tasks.
+  Example: You might have one workflow for running tests on every pull request, and another for deploying your application when code is merged to the main branch.
+
+
+    
+Events:
+
+  Events are specific activities that trigger a workflow run.
+  push: When code is pushed to a branch.
+  pull_request: When a pull request is opened, synchronized, or closed.
+  schedule: To run workflows at specific times (like cron jobs).
+  workflow_dispatch: To manually trigger a workflow from the GitHub UI or API.
+  issue_comment: When a comment is made on an issue or pull request.
+  You define which events trigger your workflow in the on: section of your YAML file.
+
+
+Jobs:
+
+A workflow consists of one or more jobs.
+Each job is a set of steps that execute on a single runner.
+Jobs can run in parallel by default, or you can configure them to run sequentially using dependencies (e.g., needs: [job_name]).    
+    
+
+Steps:
+
+Within a job, steps are individual tasks that are executed in order.
+A step can be:
+  A shell command (e.g., run: npm install).
+  An action (reusable pieces of code from GitHub Marketplace or custom actions).
+Steps within a job share the same runner environment, allowing them to pass data between them.  
+
+
+  
+Actions:
+
+Actions are reusable units of code that encapsulate common tasks.
+They can be written in JavaScript, Docker containers, or as composite actions (combining multiple steps).
+You can use actions created by GitHub, the community (available on the GitHub Marketplace), or create your own.
+
+
+Runners:
+
+A runner is a server that executes your workflow jobs.
+GitHub provides GitHub-hosted runners (virtual machines running Ubuntu, Windows, or macOS) which are pre-configured with various tools and software. 
+  These are free for public repositories and have a certain free tier for private repositories.
+You can also set up self-hosted runners on your own infrastructure for more control over the environment or if you have specific hardware requirements.
+
+
+
+
+
+
+
+
+
+  
+  
+  
