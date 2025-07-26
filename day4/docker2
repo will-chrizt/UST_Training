@@ -6,7 +6,7 @@ to create an image with specific packages included and reuse later
   4.docker run -it  "new image name/id"
 
 
-CRETAED a simple flash app  and containerised using a docker file
+CRETAED a simple flask app  and containerised using a docker file
 docker file:
 FROM python:3.11-slim
 
