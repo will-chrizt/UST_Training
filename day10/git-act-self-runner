@@ -1,0 +1,35 @@
+created a repository
+    go to action
+
+  create self hosted runner
+  execute commands provided
+  its ready for jobs
+   create a yml file in action for workflow
+
+name: test-runner
+
+on:
+  push:
+    branches: [ main, develop ] # Triggers on push to main or develop branches
+  pull_request:
+    branches: [ main, develop ] # Triggers on pull requests targeting main or develop
+
+jobs:
+  build-and-test:
+    runs-on: self-hosted  # here we specify its self-hosted, if more than one runner  use label too eg runs-on: [self-hosted,my-runner]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # Action to check out your code
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4 # Action to set up Node.js environment
+      with:
+        node-version: '20.x' # Specify the Node.js version
+
+    - name: Install dependencies
+      run: npm ci # Installs dependencies (npm ci is recommended for CI)
+
+    - name: Run tests
+      run: npm test # Runs your project's tests
+
+        
