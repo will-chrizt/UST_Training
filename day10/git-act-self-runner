@@ -1,4 +1,4 @@
-created a repository
+1.Created a workflow to run the builds and tests on self hosted runner.
     go to action
 
   create self hosted runner
@@ -31,5 +31,54 @@ jobs:
 
     - name: Run tests
       run: npm test # Runs your project's tests
+
+
+
+
+2.Created a workflow to automate docker image creation and  pushing  it to dockerhub.
+
+
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*.*.*' # Also trigger on version tags like v1.0.0
+
+env:
+  REGISTRY: docker.io # Or docker.io, your-aws-account-id.dkr.ecr.your-region.amazonaws.com
+
+jobs:
+  build-and-push-docker-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # Necessary if pushing to GitHub Packages/GHCR
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub (if pushing to Docker Hub)
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Set up Docker Buildx # <-- ADD THIS STEP
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push Docker image # Your existing build-push-action step
+      uses: docker/build-push-action@v6
+      with:
+        context: . # Or the path to your Dockerfile context
+        file: ./Dockerfile # Or the path to your Dockerfile
+        push: true
+        tags: |
+          docker.io/willchrist/py-app:latest
+          docker.io/willchrist/py-app:sha-${{ github.sha }}
+        cache-from: type=gha # Keep your cache-from settings
+        cache-to: type=gha,mode=max # Keep your cache-to settings
 
         
