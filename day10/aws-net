@@ -1,4 +1,4 @@
-created a vpc
+1.created a vpc
   it has 4 subnet -two in private and two in public
   intstances on private subnet cannot be accessed over internet
    using bastion hosting  we can connect to private ec2 instance
@@ -8,6 +8,10 @@ created a vpc
                copy paste the pem file for the private instance
                     ssh into the private subnet using private ipv4
 
+
+
+
+2.Created a nat gatway to access internt through instaces hosted in private subnet.
        by default  instances  in private subnet cannot have outbound internet access
             by creating a nat gateway and attaching it on the public subnet
                 and inside the route table of private subnet add new route destination:0.0.0.0/0  target:nat-gateway
