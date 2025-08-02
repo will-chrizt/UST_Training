@@ -3,7 +3,7 @@
   intstances on private subnet cannot be accessed over internet
    using bastion hosting  we can connect to private ec2 instance
 
-        bastion hosting - accessing private instance through public instance which is under same network
+2.bastion hosting - accessing private instance through public instance which is under same network
             ssh into public instance 
                copy paste the pem file for the private instance
                     ssh into the private subnet using private ipv4
@@ -11,8 +11,11 @@
 
 
 
-2.Created a nat gatway to access internt through instaces hosted in private subnet.
+3.Created a nat gatway to access internt through instaces hosted in private subnet.
        by default  instances  in private subnet cannot have outbound internet access
             by creating a nat gateway and attaching it on the public subnet
                 and inside the route table of private subnet add new route destination:0.0.0.0/0  target:nat-gateway
              
+
+
+4.Created eks cluster and deleted
