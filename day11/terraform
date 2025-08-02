@@ -132,6 +132,9 @@ To launch our  instance in the newly created vpc :
 
 
 
+Destroyed all the resources after the usage: 
+     terraform destroy  
+
 
         
 
