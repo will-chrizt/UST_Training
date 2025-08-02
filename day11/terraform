@@ -1,0 +1,78 @@
+
+#terraform.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.92"
+    }
+  }
+
+  required_version = ">= 1.2"
+}
+
+#main.tf
+provider "aws" {
+  region = "us-east-1"
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name = "name"
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
+  }
+
+  owners = ["099720109477"] # Canonical
+
+
+
+resource "aws_instance" "app_server" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "learn-terraform"
+  }
+}
+
+
+
+Providers: Terraform providers are distributed and versioned separately from Terraform.
+           By decoupling providers from the Terraform binary, Terraform can support any infrastructure vendor with an API.
+            HashiCorp maintains the Terraform Registry, from which you can source public Terraform providers and modules.
+
+Data sources:This data source fetches data about the latest AWS AMI that matches the filter, so you do not have to hardcode the AMI ID into your configuration. 
+             Data sources help keep your configuration dynamic and avoid hardcoded values that can become stale. 
+
+                Data source id:Data source IDs are prefixed with data, followed by the block's type and name. 
+                               In this example, the data.aws_ami.ubuntu data source loads an AMI for the most recent Ubuntu Noble Numbat release in the region configured for your provider.
+
+
+
+  
+Install aws cli to interact directly to aws services from command line
+To authenticate the Terraform AWS provider:
+   export AWS_ACCESS_KEY_ID=your_access_key_id
+   export AWS_SECRET_ACCESS_KEY=your_secret_access_key        
+
+To see the  configure list:
+   aws configure list
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                <not set>             None    None
+access_key     ****************ZJZK              env
+secret_key     ****************St8S              env
+    region                <not set>             None    None  
+
+
+*Before you can apply your configuration, you must initialize your Terraform workspace with the terraform init command:
+      terraform init: #Terraform downloads and installs the providers defined in your configuration in your current working directory.
+
+ Validate the configurations :
+        terraform valide
+
+        
+
+        
