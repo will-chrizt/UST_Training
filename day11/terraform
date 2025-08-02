@@ -136,6 +136,7 @@ Destroyed all the resources after the usage:
      terraform destroy  
 
 
-        
+
+*In short terraform helps us to manage the infrastructures using code.
 
         
