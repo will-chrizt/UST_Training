@@ -71,7 +71,41 @@ secret_key     ****************St8S              env
       terraform init: #Terraform downloads and installs the providers defined in your configuration in your current working directory.
 
  Validate the configurations :
-        terraform valide
+        terraform validate
+
+terraform apply 
+
+
+Modifying configurations:
+
+Variables:
+
+#variables.tf
+variable "instance_name" {
+  description = "Value of the EC2 instance's Name tag."
+  type        = string
+  default     = "learn-terraform"
+}
+
+variable "instance_type" {
+  description = "The EC2 instance's type."
+  type        = string
+  default     = "t2.micro"
+}
+
+*These input variables allow you to update the EC2 instance's name and type without modifying your configuration files each time. 
+
+
+
+Outputs:
+output "instance_hostname" {
+  description = "Private DNS name of the EC2 instance."
+  value       = aws_instance.app_server.private_dns
+}
+#his output value exposes your EC2 instance's hostname from your Terraform workspace.
+
+
+
 
         
 
