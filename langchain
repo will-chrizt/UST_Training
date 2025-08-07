@@ -2,7 +2,38 @@ What is langchain:
     LangChain is an LLM orchestration framework that simplifies the development of applications powered by large language models (LLMs). 
     It provides a structured way to combine different components, such as LLMs, data sources, and other tools, into a cohesive application.
 
+Core concepts:
+  Chains: Sequences of calls to LLMs and other utilities
+  Agents: More dynamic than chains, agents use an LLM to decide which actions to take and in what order.
+  Prompt Templates: These are pre-defined templates for creating prompts,
+  Document Loaders:It simplify importing external data, like PDFs, web pages, or SQL records,
+  Tools: They are specialized functions or external services that the LLM can call on to handle niche tasks.
+                    
 
 Why is LangChain important?
 LLMs excel at responding to prompts in a general context, but struggle in a specific domain they were never trained on. 
 To do that, machine learning engineers must integrate the LLM with the organization’s internal data sources and apply prompt engineering
+
+
+
+Setting Up the Environment:
+ # Create a new virtual environment named 'myenv'
+ python3 -m venv myenv
+
+ Install the core libraries :
+langchain: The core LangChain library.
+langchain-aws: The LangChain integration package for AWS services, including Bedrock.
+boto3: The official AWS SDK for Python, which LangChain-AWS uses under the hood to interact with Bedrock.
+#pip install langchain langchain-aws boto3
+
+
+ Configuring AWS Credentials:
+aws configure
+AWS Access Key ID [****************]: YOUR_ACCESS_KEY_ID
+AWS Secret Access Key [****************]: YOUR_SECRET_ACCESS_KEY
+Default region name [us-west-2]: us-east-1
+Default output format [json]: 
+
+
+
+
