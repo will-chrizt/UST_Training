@@ -1,4 +1,4 @@
-# Detailed Explanation of Cohere Command R and Its Implementation in Applications
+Command R 
 
 ## Introduction to Command R
 
