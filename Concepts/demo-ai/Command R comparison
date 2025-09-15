@@ -1,0 +1,17 @@
+
+---
+
+Command R vs. Competitors (2025)
+
+| Feature                     | **Command R** (Cohere)             | **GPT-4** (OpenAI)          | **Claude** (Anthropic)      | **Mistral Saba** (Mistral AI)  |
+| --------------------------- | ---------------------------------- | --------------------------- | --------------------------- | ------------------------------ |
+| **Model Type**              | Instruction-tuned LLM              | Instruction-tuned LLM       | Instruction-tuned LLM       | Instruction-tuned LLM          |
+| **Model Size**              | 6B, 13B, 52B, 104B                 | 175B, 1T+                   | 52B, 120B                   | 7B, 12B                        |
+| **Performance**             | 88.2% MMLU, 71.4% HumanEval        | 86.4% MMLU, 69.8% HumanEval | 89.3% MMLU, 72.6% HumanEval | Not publicly benchmarked       |
+| **Context Length**          | Up to 256k tokens                  | Up to 32k tokens            | Up to 32k tokens            | Up to 128k tokens              |
+| **Cost per Million Tokens** | \$2–\$4 (fine-tuned)               | \$30–\$60                   | \$30–\$60                   | Not publicly disclosed         |
+| **Fine-tuning Support**     | Yes                                | Yes                         | Yes                         | Limited                        |
+| **Open Source**             | No                                 | No                          | No                          | Yes                            |
+| **Enterprise Focus**        | High (RAG, multilingual, tool use) | High (general-purpose)      | High (safety, alignment)    | High (open-source flexibility) |
+
+
