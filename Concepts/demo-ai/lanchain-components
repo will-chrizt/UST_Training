@@ -1,0 +1,174 @@
+Langchain
+
+LLMs: 
+     - langchian provide a standard interface to connect our application to any llm
+     - adv -  no nned to change the code 
+    - LLMs are the brains of LangChain.
+    - LangChain doesn’t build them, it just makes it easy to plug in any model, configure it, and use it inside   chains , agents ,   or apps.
+
+
+
+
+Prompts:
+
+🔹 How LangChain Handles Prompts
+
+LangChain provides tools for:
+
+  Prompt Templates – Reusable, dynamic templates for prompts.
+
+  Few-shot Prompts – Add examples to guide the model.
+
+  Chat Prompts – Structure conversations with roles (system, human, AI).
+
+
+
+
+Why LangChain Prompts are Useful
+
+  Reusability → Define once, use many times.
+
+  Dynamic inputs → Insert user data into the template.
+
+  Multi-step reasoning → Chain multiple prompts together.
+
+  Maintainability → Easier to debug and improve prompts.
+
+
+
+
+
+
+Chains:
+A Chain is a sequence of steps where the output of one step can become the input for the next.
+
+Why Chains Matter
+
+  LLMs on their own just take a prompt and return text.
+
+  Ch ains let you automate multi-step tasks like:
+
+  Retrieve relevant documents
+
+  Summarize them
+
+  Generate a report
+  …all in one pipeline.
+
+
+
+Types of Chains
+
+  Simple Chains – One LLM + one prompt.
+  Sequential Chains – Output of one chain goes into another.
+  Conditional / Router Chains – Decide which chain to run based on input.
+  Retrieval Chains – Combine document search with LLM.
+       Example: Ask a question → LangChain retrieves relevant document chunks → LLM generates answer.
+
+
+
+
+Agent:
+An Agent is a system that decides which tool or chain to use to solve a user’s request.
+
+smart decision-maker:
+
+Why Agents Matter??
+
+  -LLMs can generate text but don’t know when to use external tools.
+
+  -Agents bridge that gap by letting LLMs interact with tools, APIs, databases, or other chains.
+
+
+
+
+Memory:
+  -Memory is what allows your LangChain application to remember past interactions across a conversation or session.
+  -Without memory, every query is stateless
+
+
+Types of Memory in LangChain:
+
+  ConversationBufferMemory
+
+    Keeps all previous messages in a buffer.
+
+    Example: Chatbot remembers entire conversation.
+
+  ConversationSummaryMemory
+
+    Summarizes past messages to save tokens.
+
+  ReadOnlyMemory
+
+    Stores initial context that never changes.
+
+  Custom Memory
+
+    You can store anything: user preferences, previous calculations, API responses, etc.
+
+
+
+
+Tools:
+Tools are external functions or APIs that LangChain agents can call to perform specific tasks.
+
+
+
+Common Types of Tools
+
+Retrieval Tools – Search a database or documents (e.g., FAISS, Pinecone, SQL queries)
+
+Web Search Tools – DuckDuckGo, Google Search, or SerpAPI
+
+Calculation Tools – Python REPL, math calculators
+
+Custom API Tools – Any API your business provides (weather, stock data, internal software)
+
+Utility Tools – File parsers, OCR functions, data converters
+
+
+
+
+
+          ┌───────────────┐
+          │   User Input  │
+          └──────┬────────┘
+                 │
+                 ▼
+          ┌───────────────┐
+          │    Prompts    │  <- Templates + instructions for LLM
+          └──────┬────────┘
+                 │
+                 ▼
+          ┌───────────────┐
+          │      LLMs     │  <- GPT, Claude, etc. (the brain)
+          └──────┬────────┘
+                 │
+                 ▼
+          ┌───────────────┐
+          │     Chains    │  <- Sequence of steps (multi-step reasoning)
+          └──────┬────────┘
+                 │
+                 ▼
+          ┌───────────────┐
+          │    Agents     │  <- Decides which tool or chain to use
+          └──────┬────────┘
+                 │
+        ┌────────┴─────────┐
+        │                  │
+        ▼                  ▼
+ ┌───────────────┐   ┌───────────────┐
+ │    Tools      │   │    Memory     │
+ │  (APIs, DBs,  │   │ Stores past   │
+ │ Calculator,   │   │ interactions  │
+ │ Web Search)   │   │ for context   │
+ └───────────────┘   └───────────────┘
+        │                  │
+        └─────────┬────────┘
+                  ▼
+          ┌───────────────┐
+          │   Output /    │
+          │   Response    │
+          └───────────────┘
+
