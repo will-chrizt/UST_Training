@@ -1,4 +1,4 @@
-"# Detailed Explanation of LangChain and Its Implementation in Applications
+
 
 ## Introduction to LangChain
 
