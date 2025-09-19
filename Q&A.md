@@ -1,4 +1,4 @@
- **Declarative State Management**.
+ ***1 Declarative State Management***.
 
 Here's a more detailed explanation:
 
@@ -36,7 +36,7 @@ When you interact with Kubernetes, you primarily define resources using declarat
 By following this declarative model, Kubernetes acts as a self-organizing and self-healing system, automating complex operational tasks and maintaining the desired application state without constant manual intervention.
 
 
-**SetCap**
+***2 SetCap***
 
 The command **`setcap`** allows a non-root user in a Docker container to bind a process to privileged ports, such as port 80. This is a crucial security practice in containerization.
 
