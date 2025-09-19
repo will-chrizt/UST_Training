@@ -1,4 +1,4 @@
- ***1 Declarative State Management***.
+ *1 Declarative State Management*.
 
 Here's a more detailed explanation:
 
