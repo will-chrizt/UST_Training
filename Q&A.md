@@ -1,8 +1,8 @@
- *1 Declarative State Management*.
+
 
 Here's a more detailed explanation:
 
-### Declarative vs. Imperative Programming
+### 1 Declarative vs. Imperative Programming
 In programming, there are two main paradigms: declarative and imperative.
 *   **Imperative Programming** requires you to write the business logic and explicitly tell the system *how* to perform a task. For instance, in `boto3` (an AWS SDK), if you want to create three instances, you would write a loop to create them one by one.
 *   **Declarative Programming**, on the other hand, means you don't have to write the business logic; you simply *declare* the desired outcome. For example, in Terraform, you declare the creation of instances and the desired count, and the tool handles the underlying logic to achieve that state.
@@ -36,7 +36,8 @@ When you interact with Kubernetes, you primarily define resources using declarat
 By following this declarative model, Kubernetes acts as a self-organizing and self-healing system, automating complex operational tasks and maintaining the desired application state without constant manual intervention.
 
 
-***2 SetCap***
+---------------------------------------------------------------------------------------------------------------
+
 
 The command **`setcap`** allows a non-root user in a Docker container to bind a process to privileged ports, such as port 80. This is a crucial security practice in containerization.
 
@@ -60,6 +61,8 @@ The sources illustrate this with examples from Dockerfiles:
 4.  **Run as Non-Root**: Finally, the container is configured to run the application as the newly created non-root user.
 
 This process ensures that your application can listen on standard HTTP/HTTPS ports while adhering to the principle of **least privilege**, enhancing the overall security of your containerized application.
+
+---------------------------------------------------------------------------------------------------------------------------
 
 
 ***Docker image vs layer***
