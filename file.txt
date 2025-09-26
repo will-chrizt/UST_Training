@@ -1,1 +1,61 @@
-first file
+Project 1 - AI Powered Shopping Assistant
+Frontend tech:
+    -html , css
+    -React
+    -JavaScript 
+Backend tech:
+    - python with flask
+    - REST APIs
+    - SQLite
+    - Node.js , Express.js
+AI & Machine Learning:
+    -AWS Bedrock - 
+    -Anthropic Claude 3.5 Sonnet 
+    -Boto3
+Devops:    
+    -Multi stage containerization using docker
+    -Kubernetes deployment
+    -GitHub actions , CI/CD
+    -self-hosted runner
+    -Prometheus & Grafana (monitoring)
+    -Helm
+    -Iac using Terraform
+    -Argocd 
+    -One click deployment
+Project 2 -  Terms & Conditions Analyzer
+Frontend tech:
+    -html , css
+    -streamlit
+Backend tech:
+    - python with flask
+    - REST APIs
+AI & Machine Learning: 
+    -RAG framework 
+    -AWS Bedrock - 
+    -Anthropic Claude 3.5 Sonnet 
+    -Amazon Titan Embed Text v2  
+    -LangChain 
+    -LangGraph
+    -FAISS (CPU) 
+    -Boto3
+Devops:    
+    -Multi stage containerization using docker
+    -Kubernetes deployment
+Project 3 - Kubernetes Copilot
+Frontend tech:
+    -streamlit 
+Backend tech:
+    - python with flask
+    - REST APIs
+AI & Machine Learning:
+    -AWS Bedrock - 
+    -Claude 3 Haiku   
+    -LangChain 
+    -LangGraph
+    -Boto3
+Devops:
+   -Multi stage containerization using docker
+   -Kubernetes deployment
+
+
+
